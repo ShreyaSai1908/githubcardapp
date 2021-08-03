@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import Form from './components/Form';
+import CardList from './components/CardList';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+
+  const [cards, setCards] = useState([])
+  
+  const addNewCard = cardInfo => {
+    setCards(cards.concat(cardInfo))
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form onSubmit={addNewCard} />
+      <CardList cards={cards} />
     </div>
   );
 }
